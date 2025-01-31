@@ -1,0 +1,24 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model cameras {
+  id       String  @id @default(auto()) @map("_id") @db.ObjectId
+  ipAddress String 
+  name      String?
+  location  String
+  events    events[] @relation("CameraEvents")
+}
+
+model events {
+  id         String   @id @default(auto()) @map("_id") @db.ObjectId
+  camera_id  String   @db.ObjectId
+  amount     Int
+  created_at DateTime
+  camera     cameras  @relation("CameraEvents", fields: [camera_id], references: [id])
+}
