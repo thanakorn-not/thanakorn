@@ -18,8 +18,8 @@ app.get("/", (req, res)=>{
 const cameraRoute = require("./routes/camera.route");
 app.use("/cameras", cameraRoute);
 
-const eventRoute = require("./routes/event.route");
-app.use("/events", eventRoute);
+// const eventRoute = require("./routes/event.route");
+// app.use("/events", eventRoute);
 
 
 app.listen(port, () => {

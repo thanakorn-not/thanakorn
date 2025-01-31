@@ -1,7 +1,6 @@
 const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
 
-// Create a new post
 exports.createCamera = async (req, res) => {
   const { name,location } = req.body; // Include authorId
   const result = await prisma.cameras.create({
@@ -15,10 +14,10 @@ exports.createCamera = async (req, res) => {
 
 // Get all posts
 exports.getCameras = async (req, res) => {
-  const cameras = await prisma.cameras.findMany({
+  const camera = await prisma.cameras.findMany({
     include: { events: true }, // Include author details
   });
-  res.json(cameras);
+  res.json(camera);
 };
 
 // Get a single post by ID

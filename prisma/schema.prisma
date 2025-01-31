@@ -9,7 +9,7 @@ datasource db {
 
 model cameras {
   id       String  @id @default(auto()) @map("_id") @db.ObjectId
-  ipAddress String 
+  ip_address String 
   name      String?
   location  String
   events    events[] @relation("CameraEvents")
